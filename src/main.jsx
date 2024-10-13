@@ -14,6 +14,8 @@ import AdminScreen from "./screens/AdminScreen.jsx";
 import AdminBanner from "./screens/AdminBanner.jsx";
 import AdminAbout from "./screens/AdminAbout.jsx";
 import AdminProduct from "./screens/AdminProduct.jsx";
+import AdminContactPage from "./screens/AdminContactPage.jsx";
+import AdminContactForm from "./screens/AdminContactForm.jsx";
 import Home from "./screens/Home.jsx";
 import About from "./screens/About.jsx";
 import Contact from "./screens/Contact.jsx";
@@ -39,6 +41,8 @@ const router = createBrowserRouter(
         <Route path="/admin/banner" element={<AdminBanner />} />
         <Route path="/admin/about" element={<AdminAbout />} />
         <Route path="/admin/product" element={<AdminProduct />} />
+        <Route path="/admin/contact/page" element={<AdminContactPage />} />
+        <Route path="/admin/contact/form" element={<AdminContactForm />} />
       </Route>
       <Route path="*" element={<NotFound />} />
     </Route>

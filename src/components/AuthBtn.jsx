@@ -34,7 +34,7 @@ const Hero = () => {
                   Home
                 </button>
               </Link>
-              <Link to="/admin/contact">
+              <Link to="/admin/contact/page">
                 <button className="bg-purple-500 text-white px-6 py-2 rounded-md shadow-md hover:bg-purple-600 transition duration-300 transform hover:scale-105">
                   Contact
                 </button>
@@ -52,6 +52,11 @@ const Hero = () => {
               <Link to="/admin/banner">
                 <button className="bg-green-500 text-white px-6 py-2 rounded-md shadow-md hover:bg-green-600 transition duration-300 transform hover:scale-105">
                   Banner
+                </button>
+              </Link>
+              <Link to="/admin/contact/form">
+                <button className="bg-green-500 text-white px-6 py-2 rounded-md shadow-md hover:bg-green-600 transition duration-300 transform hover:scale-105">
+                  Contact Form
                 </button>
               </Link>
               <button
