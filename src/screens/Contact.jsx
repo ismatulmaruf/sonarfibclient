@@ -79,6 +79,8 @@ const ContactForm = () => {
     }
   };
 
+  console.log(contactInfo);
+
   if (loading) {
     return <Loading />;
   }
@@ -117,7 +119,7 @@ const ContactForm = () => {
           <div className="flex flex-col items-center">
             <FaMapMarkerAlt className="text-blue-500 text-3xl mb-2" />
             <h3 className="text-xl font-semibold mb-2">Address</h3>
-            <p>{contactInfo.address}</p>
+            <p>{contactInfo.Address}</p>
           </div>
           <div className="flex flex-col items-center">
             <FaPhoneAlt className="text-blue-500 text-3xl mb-2" />
