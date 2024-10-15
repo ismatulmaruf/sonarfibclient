@@ -36,66 +36,68 @@ const LoginScreen = () => {
   };
 
   return (
-    <FormContainer>
-      <h1 className="text-xl font-bold mb-4">Sign In</h1>
+    <div className="min-h-screen">
+      <FormContainer>
+        <h1 className="text-xl font-bold mb-4 ">Sign In</h1>
 
-      <form onSubmit={submitHandler} className="space-y-4">
-        <div>
-          <label
-            htmlFor="email"
-            className="block text-sm font-medium text-gray-700"
+        <form onSubmit={submitHandler} className="space-y-4">
+          <div>
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Email Address
+            </label>
+            <input
+              type="email"
+              id="email"
+              placeholder="Enter email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          <div>
+            <label
+              htmlFor="password"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Password
+            </label>
+            <input
+              type="password"
+              id="password"
+              placeholder="Enter password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          <button
+            disabled={isLoading}
+            type="submit"
+            className={`w-full mt-3 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 ${
+              isLoading ? "opacity-50 cursor-not-allowed" : ""
+            }`}
           >
-            Email Address
-          </label>
-          <input
-            type="email"
-            id="email"
-            placeholder="Enter email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
+            Sign In
+          </button>
+        </form>
 
-        <div>
-          <label
-            htmlFor="password"
-            className="block text-sm font-medium text-gray-700"
-          >
-            Password
-          </label>
-          <input
-            type="password"
-            id="password"
-            placeholder="Enter password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
+        {isLoading && <Loader />}
 
-        <button
-          disabled={isLoading}
-          type="submit"
-          className={`w-full mt-3 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 ${
-            isLoading ? "opacity-50 cursor-not-allowed" : ""
-          }`}
-        >
-          Sign In
-        </button>
-      </form>
-
-      {isLoading && <Loader />}
-
-      <div className="py-3">
+        {/* <div className="py-3">
         <p>
           New Customer?{" "}
           <Link to="/register" className="text-blue-600 hover:underline">
             Register
           </Link>
         </p>
-      </div>
-    </FormContainer>
+      </div> */}
+      </FormContainer>
+    </div>
   );
 };
 

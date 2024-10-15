@@ -2,80 +2,75 @@ import React, { useState, useEffect } from "react";
 import Authbtn from "../components/AuthBtn";
 
 const AdminContact = () => {
-  const [contactData, setContactData] = useState([]); // State to store contact data
+  const [forms, setForms] = useState([]); // State to store all forms
   const [loading, setLoading] = useState(true); // State for loading indicator
   const [message, setMessage] = useState(""); // State for status messages
-  const [formData, setFormData] = useState({}); // State for form data
 
-  // Fetch the contact data (GET)
+  // Fetch all forms when the component mounts
   useEffect(() => {
-    const fetchContactData = async () => {
+    const fetchForms = async () => {
       try {
         const response = await fetch(
           `${import.meta.env.VITE_API_URL}/api/form`
         );
         const data = await response.json();
-        setContactData(data);
+        setForms(data);
         setLoading(false);
       } catch (error) {
-        console.error("Failed to fetch contact data", error);
+        console.error("Error fetching forms:", error);
+        setMessage("Error fetching forms");
         setLoading(false);
       }
     };
 
-    fetchContactData();
+    fetchForms();
   }, []);
 
-  // Update contact data (PUT)
-  const updateContactData = async (id) => {
+  // Update form (toggle isFormed)
+  const toggleIsFormed = async (id, currentIsFormed) => {
     try {
       const response = await fetch(
         `${import.meta.env.VITE_API_URL}/api/form/${id}`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData),
+          body: JSON.stringify({ isFormed: !currentIsFormed }),
         }
       );
 
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
+      if (response.ok) {
+        const updatedForm = await response.json();
+        setForms(forms.map((form) => (form._id === id ? updatedForm : form)));
+        setMessage("Form updated successfully");
+      } else {
+        setMessage("Error updating form");
       }
-
-      const updatedData = await response.json();
-      setContactData((prev) =>
-        prev.map((contact) => (contact._id === id ? updatedData : contact))
-      ); // Update the state with the new data
-      setMessage("Contact information updated successfully!"); // Success message
     } catch (error) {
-      console.error("Failed to update contact data", error);
-      setMessage("Failed to update contact information. Please try again."); // Error message
+      console.error("Error updating form:", error);
+      setMessage("Error updating form");
     }
   };
 
-  // Delete contact data (DELETE)
-  const deleteContactData = async (id) => {
+  // Delete form
+  const deleteForm = async (id) => {
     try {
       const response = await fetch(
         `${import.meta.env.VITE_API_URL}/api/form/${id}`,
-        { method: "DELETE" }
+        {
+          method: "DELETE",
+        }
       );
 
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
+      if (response.ok) {
+        setForms(forms.filter((form) => form._id !== id));
+        setMessage("Form deleted successfully");
+      } else {
+        setMessage("Error deleting form");
       }
-
-      setContactData((prev) => prev.filter((contact) => contact._id !== id));
-      setMessage("Contact information deleted successfully!"); // Success message
     } catch (error) {
-      console.error("Failed to delete contact data", error);
-      setMessage("Failed to delete contact information. Please try again."); // Error message
+      console.error("Error deleting form:", error);
+      setMessage("Error deleting form");
     }
-  };
-
-  // Handle form input changes
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   // Loading spinner
@@ -96,71 +91,39 @@ const AdminContact = () => {
   return (
     <>
       <Authbtn />
-      <div className="min-h-screen p-8">
-        <h1 className="text-2xl font-bold mb-4">Manage Contact Page</h1>
-
-        {/* Status Message */}
-        {message && (
-          <div className="mb-4 text-lg">
-            <span className="text-green-500">{message}</span>
-          </div>
-        )}
-
-        {/* Update Contact Form */}
-        <div className="mb-6">
-          <h2 className="text-xl mb-4">Update Contact Details</h2>
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              updateContactData(formData._id); // Pass the ID of the contact being updated
-            }}
-          >
-            <div className="mb-4">
-              <label className="block mb-2 text-sm font-medium">
-                Banner Text
-              </label>
-              <input
-                type="text"
-                name="bannertext"
-                value={formData.bannertext || ""}
-                onChange={handleChange}
-                className="border rounded w-full py-2 px-3"
-                required
-              />
-            </div>
-            {/* Other input fields... */}
-            <button
-              type="submit"
-              className="bg-blue-500 text-white py-2 px-4 rounded"
-            >
-              Update Contact Info
-            </button>
-          </form>
-        </div>
-
-        {/* Contact List */}
-        <h2 className="text-xl mb-4">Contact List</h2>
+      <div className="p-4 min-h-screen">
+        {message && <div className="text-center text-red-500">{message}</div>}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {contactData.map((contact) => (
-            <div key={contact._id} className="border p-4 rounded shadow">
-              <h3 className="text-lg font-semibold">{contact.bannertext}</h3>
-              <p>{contact.herotext}</p>
-              <p>{contact.heroparagraph}</p>
-              <p>{contact.Address}</p>
-              <p>{contact.phone}</p>
-              <p>{contact.email}</p>
-              <div className="flex justify-between mt-4">
+          {forms.map((form) => (
+            <div key={form._id} className="border p-4 rounded shadow">
+              <p>
+                <strong>Name:</strong> {form.user_name}
+              </p>
+              <p>
+                <strong>Email:</strong> {form.user_email}
+              </p>
+              <p>
+                <strong>Message:</strong> {form.message}
+              </p>
+              <p>
+                <strong>Contacted:</strong> {form.isFormed ? "Yes" : "No"}
+              </p>
+
+              <div className="flex space-x-2 mt-4">
                 <button
-                  className="bg-green-500 text-white py-1 px-2 rounded hover:bg-green-600"
-                  onClick={() => {
-                    setFormData(contact); // Set the selected contact data to the form
-                  }}
+                  className={`px-4 py-2 rounded ${
+                    form.isFormed ? "bg-green-500" : "bg-gray-500"
+                  } text-white`}
+                  onClick={() => toggleIsFormed(form._id, form.isFormed)}
                 >
-                  Check
+                  {form.isFormed
+                    ? "Mark as Not Contacted"
+                    : "Mark as Contacted"}
                 </button>
+
                 <button
-                  className="bg-red-500 text-white py-1 px-2 rounded hover:bg-red-600"
-                  onClick={() => deleteContactData(contact._id)}
+                  className="px-4 py-2 bg-red-500 text-white rounded"
+                  onClick={() => deleteForm(form._id)}
                 >
                   Delete
                 </button>

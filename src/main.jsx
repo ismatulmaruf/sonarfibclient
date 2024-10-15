@@ -22,8 +22,8 @@ import Contact from "./screens/Contact.jsx";
 import Product from "./screens/Product.jsx";
 import LoginScreen from "./screens/LoginScreen.jsx";
 import NotFound from "./screens/NotFound.jsx";
-import RegisterScreen from "./screens/RegisterScreen.jsx";
-import ProfileScreen from "./screens/ProfileScreen.jsx";
+// import RegisterScreen from "./screens/RegisterScreen.jsx";
+// import ProfileScreen from "./screens/ProfileScreen.jsx";
 import PrivateRoute from "./components/PrivateRoute.jsx";
 
 const router = createBrowserRouter(
@@ -34,9 +34,9 @@ const router = createBrowserRouter(
       <Route path="/about" element={<About />} />
       <Route path="/product" element={<Product />} />
       <Route path="/contact" element={<Contact />} />
-      <Route path="/register" element={<RegisterScreen />} />
+      {/* <Route path="/register" element={<RegisterScreen />} /> */}
       <Route path="" element={<PrivateRoute />}>
-        <Route path="/profile" element={<ProfileScreen />} />
+        {/* <Route path="/profile" element={<ProfileScreen />} /> */}
         <Route path="/admin" element={<AdminScreen />} />
         <Route path="/admin/banner" element={<AdminBanner />} />
         <Route path="/admin/about" element={<AdminAbout />} />

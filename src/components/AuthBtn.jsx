@@ -20,15 +20,15 @@ const Hero = () => {
 
   return (
     <div className="px-5 sm:px-10">
-      <div className="flex justify-center overflow-x-auto">
-        <div className="flex space-x-2 p-4">
+      <div className="flex justify-center">
+        <div className="flex space-x-2 p-4 overflow-x-auto no-scrollbar">
           {userInfo ? (
             <>
-              <Link to="/profile">
+              {/* <Link to="/profile">
                 <button className="bg-indigo-500 text-white px-6 py-2 rounded-md shadow-md hover:bg-indigo-600 transition duration-300 transform hover:scale-105">
                   Profile
                 </button>
-              </Link>
+              </Link> */}
               <Link to="/admin">
                 <button className="bg-teal-500 text-white px-6 py-2 rounded-md shadow-md hover:bg-teal-600 transition duration-300 transform hover:scale-105">
                   Home
@@ -55,8 +55,8 @@ const Hero = () => {
                 </button>
               </Link>
               <Link to="/admin/contact/form">
-                <button className="bg-green-500 text-white px-6 py-2 rounded-md shadow-md hover:bg-green-600 transition duration-300 transform hover:scale-105">
-                  Contact Form
+                <button className="bg-indigo-500 text-white px-6 py-2 rounded-md shadow-md hover:bg-rose-600 transition duration-300 transform hover:scale-105">
+                  Form
                 </button>
               </Link>
               <button

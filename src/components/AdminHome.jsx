@@ -94,16 +94,254 @@ const AdminHome = () => {
   );
 
   return (
-    <div className="flex items-center justify-center min-h-screen  p-8">
-      <div className="max-w-2xl w-full bg-white shadow-2xl rounded-xl p-10">
-        <h1 className="text-4xl font-bold mb-8 text-center text-gray-900 tracking-wide">
+    // <div className="flex items-center justify-center min-h-screen  p-8">
+    //   <div className="max-w-2xl w-full bg-white shadow-2xl rounded-xl p-10">
+    //     <h1 className="text-4xl font-bold mb-8 text-center text-gray-900 tracking-wide">
+    //       Update Home Content
+    //     </h1>
+
+    //     {isLoading ? (
+    //       <Loading />
+    //     ) : (
+    //       <form onSubmit={handleSubmit} className="space-y-8">
+    //         {/* Banner Image */}
+    //         <div>
+    //           <label className="block text-gray-700 font-semibold mb-2">
+    //             Banner Image URL
+    //           </label>
+    //           <input
+    //             type="text"
+    //             name="bannerImg"
+    //             value={formData.bannerImg}
+    //             onChange={handleChange}
+    //             className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring focus:ring-blue-500 focus:border-blue-500 transition duration-300"
+    //             placeholder="Enter URL"
+    //           />
+    //         </div>
+
+    //         {/* Banner Text */}
+    //         <div>
+    //           <label className="block text-gray-700 font-semibold mb-2">
+    //             Banner Text
+    //           </label>
+    //           <input
+    //             type="text"
+    //             name="bannerText"
+    //             value={formData.bannerText}
+    //             onChange={handleChange}
+    //             className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring focus:ring-blue-500 focus:border-blue-500 transition duration-300"
+    //             placeholder="Enter Banner Text"
+    //           />
+    //         </div>
+
+    //         {/* Second Column Title */}
+    //         <div>
+    //           <label className="block text-gray-700 font-semibold mb-2">
+    //             Second Column Title
+    //           </label>
+    //           <input
+    //             type="text"
+    //             name="secondColumnTitle"
+    //             value={formData.secondColumnTitle}
+    //             onChange={handleChange}
+    //             className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring focus:ring-blue-500 focus:border-blue-500 transition duration-300"
+    //             placeholder="Enter Title"
+    //           />
+    //         </div>
+
+    //         {/* Second Paragraph 1 */}
+    //         <div>
+    //           <label className="block text-gray-700 font-semibold mb-2">
+    //             Second Paragraph 1
+    //           </label>
+    //           <textarea
+    //             name="secondParagraph1"
+    //             value={formData.secondParagraph1}
+    //             onChange={handleChange}
+    //             className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring focus:ring-blue-500 focus:border-blue-500 transition duration-300"
+    //             placeholder="Enter Paragraph 1"
+    //             rows={4}
+    //           ></textarea>
+    //         </div>
+
+    //         {/* Second Paragraph 2 */}
+    //         <div>
+    //           <label className="block text-gray-700 font-semibold mb-2">
+    //             Second Paragraph 2
+    //           </label>
+    //           <textarea
+    //             name="secondParagraph2"
+    //             value={formData.secondParagraph2}
+    //             onChange={handleChange}
+    //             className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring focus:ring-blue-500 focus:border-blue-500 transition duration-300"
+    //             placeholder="Enter Paragraph 2"
+    //             rows={4}
+    //           ></textarea>
+    //         </div>
+
+    //         {/* Second Image */}
+    //         <div>
+    //           <label className="block text-gray-700 font-semibold mb-2">
+    //             Second Image URL
+    //           </label>
+    //           <input
+    //             type="text"
+    //             name="secondImage"
+    //             value={formData.secondImage}
+    //             onChange={handleChange}
+    //             className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring focus:ring-blue-500 focus:border-blue-500 transition duration-300"
+    //             placeholder="Enter Image URL"
+    //           />
+    //         </div>
+
+    //         {/* Third Paragraph 1 */}
+    //         <div>
+    //           <label className="block text-gray-700 font-semibold mb-2">
+    //             Third Paragraph 1
+    //           </label>
+    //           <textarea
+    //             name="thirdParagraph1"
+    //             value={formData.thirdParagraph1}
+    //             onChange={handleChange}
+    //             className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring focus:ring-blue-500 focus:border-blue-500 transition duration-300"
+    //             placeholder="Enter Third Paragraph 1"
+    //             rows={4}
+    //           ></textarea>
+    //         </div>
+
+    //         {/* Third Paragraph 2 */}
+    //         <div>
+    //           <label className="block text-gray-700 font-semibold mb-2">
+    //             Third Paragraph 2
+    //           </label>
+    //           <textarea
+    //             name="thirdParagraph2"
+    //             value={formData.thirdParagraph2}
+    //             onChange={handleChange}
+    //             className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring focus:ring-blue-500 focus:border-blue-500 transition duration-300"
+    //             placeholder="Enter Third Paragraph 2"
+    //             rows={4}
+    //           ></textarea>
+    //         </div>
+
+    //         {/* Third Image */}
+    //         <div>
+    //           <label className="block text-gray-700 font-semibold mb-2">
+    //             Third Image URL
+    //           </label>
+    //           <input
+    //             type="text"
+    //             name="thirdImage"
+    //             value={formData.thirdImage}
+    //             onChange={handleChange}
+    //             className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring focus:ring-blue-500 focus:border-blue-500 transition duration-300"
+    //             placeholder="Enter Image URL"
+    //           />
+    //         </div>
+
+    //         {/* Fourth Paragraph */}
+    //         <div>
+    //           <label className="block text-gray-700 font-semibold mb-2">
+    //             Fourth Paragraph
+    //           </label>
+    //           <textarea
+    //             name="fourthParagraph"
+    //             value={formData.fourthParagraph}
+    //             onChange={handleChange}
+    //             className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring focus:ring-blue-500 focus:border-blue-500 transition duration-300"
+    //             placeholder="Enter Fourth Paragraph"
+    //             rows={4}
+    //           ></textarea>
+    //         </div>
+
+    //         {/* Fifth Paragraph 1 */}
+    //         <div>
+    //           <label className="block text-gray-700 font-semibold mb-2">
+    //             Fifth Paragraph 1
+    //           </label>
+    //           <textarea
+    //             name="fifthParagraph1"
+    //             value={formData.fifthParagraph1}
+    //             onChange={handleChange}
+    //             className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring focus:ring-blue-500 focus:border-blue-500 transition duration-300"
+    //             placeholder="Enter Fifth Paragraph 1"
+    //             rows={4}
+    //           ></textarea>
+    //         </div>
+
+    //         {/* Fifth Paragraph 2 */}
+    //         <div>
+    //           <label className="block text-gray-700 font-semibold mb-2">
+    //             Fifth Paragraph 2
+    //           </label>
+    //           <textarea
+    //             name="fifthParagraph2"
+    //             value={formData.fifthParagraph2}
+    //             onChange={handleChange}
+    //             className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring focus:ring-blue-500 focus:border-blue-500 transition duration-300"
+    //             placeholder="Enter Fifth Paragraph 2"
+    //             rows={4}
+    //           ></textarea>
+    //         </div>
+
+    //         {/* Fifth Image */}
+    //         <div>
+    //           <label className="block text-gray-700 font-semibold mb-2">
+    //             Fifth Image URL
+    //           </label>
+    //           <input
+    //             type="text"
+    //             name="fifthImage"
+    //             value={formData.fifthImage}
+    //             onChange={handleChange}
+    //             className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring focus:ring-blue-500 focus:border-blue-500 transition duration-300"
+    //             placeholder="Enter Image URL"
+    //           />
+    //         </div>
+
+    //         {/* Final Content */}
+    //         <div>
+    //           <label className="block text-gray-700 font-semibold mb-2">
+    //             Final Content
+    //           </label>
+    //           <textarea
+    //             name="finalContent"
+    //             value={formData.finalContent}
+    //             onChange={handleChange}
+    //             className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring focus:ring-blue-500 focus:border-blue-500 transition duration-300"
+    //             placeholder="Enter Final Content"
+    //             rows={4}
+    //           ></textarea>
+    //         </div>
+
+    //         {/* Submit Button */}
+    //         <button
+    //           type="submit"
+    //           className="w-full px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-300 shadow-lg"
+    //         >
+    //           Update Content
+    //         </button>
+    //       </form>
+    //     )}
+
+    //     {/* Response Message */}
+    //     {responseMessage && (
+    //       <div className="mt-6 text-center text-green-600 font-semibold">
+    //         {responseMessage}
+    //       </div>
+    //     )}
+    //   </div>
+    // </div>
+    <div className="flex items-center justify-center min-h-screen p-4 sm:p-6 lg:p-8 bg-gray-100">
+      <div className="w-full max-w-4xl bg-white shadow-2xl rounded-xl p-6 sm:p-8 md:p-10 lg:p-12">
+        <h1 className="text-3xl sm:text-4xl font-bold mb-6 text-center text-gray-900 tracking-wide">
           Update Home Content
         </h1>
 
         {isLoading ? (
           <Loading />
         ) : (
-          <form onSubmit={handleSubmit} className="space-y-8">
+          <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
             {/* Banner Image */}
             <div>
               <label className="block text-gray-700 font-semibold mb-2">

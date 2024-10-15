@@ -6,6 +6,8 @@ const AdminContact = () => {
   const [loading, setLoading] = useState(true); // State for loading indicator
   const [message, setMessage] = useState(""); // State for status messages
 
+  console.log(contactData);
+
   // Fetch the contact data (GET)
   useEffect(() => {
     const fetchContactData = async () => {
@@ -100,6 +102,19 @@ const AdminContact = () => {
                 type="text"
                 name="bannertext"
                 value={contactData.bannertext || ""}
+                onChange={handleChange}
+                className="border rounded w-full py-2 px-3"
+                required
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block mb-2 text-sm font-medium">
+                Banner image
+              </label>
+              <input
+                type="text"
+                name="bannerimg"
+                value={contactData.bannerimg || ""}
                 onChange={handleChange}
                 className="border rounded w-full py-2 px-3"
                 required
