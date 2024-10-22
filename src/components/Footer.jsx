@@ -11,11 +11,11 @@ const Footer = () => {
           {/* Company Name and Description */}
           <div className="mb-6 md:mb-0">
             <h3 className="text-gray-800 text-lg font-semibold mb-2">
-              Sonargaon Fibers
+              Gold Jute
             </h3>
             <p className="text-gray-500">
-              Providing the best travel and visa services for an exceptional
-              customer experience.
+              Providing the best Jute services for an exceptional customer
+              experience.
             </p>
           </div>
 

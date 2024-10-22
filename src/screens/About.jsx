@@ -202,23 +202,27 @@ const About = () => {
     <div>
       {/* Banner Section */}
       <div className="relative">
-        <img src={bannerData.Bgimg} alt="Banner" className="w-full h-[400px]" />
-        <div className="absolute inset-0 bg-black opacity-50"></div>
+        <img
+          src={bannerData.Bgimg}
+          alt="Banner"
+          className="w-full h-[500px] object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-transparent"></div>
         <div className="absolute inset-0 flex items-center justify-center">
-          <h1 className="text-white text-4xl font-bold">
+          <h1 className="text-white text-5xl font-extrabold drop-shadow-lg animate-fade-in">
             {bannerData.bannerTitle}
           </h1>
         </div>
       </div>
 
       {/* Main Content Section */}
-      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Introduction */}
-        <h2 className="text-3xl font-semibold mb-6 text-center">
+        <h2 className="text-4xl font-bold text-gray-900 mb-8 text-center tracking-wide">
           {bannerData.title}
         </h2>
 
-        <p className="text-lg text-gray-700 mb-6 text-center">
+        <p className="text-xl text-gray-700 mb-8 text-center max-w-2xl mx-auto leading-relaxed">
           {bannerData.description}
         </p>
 
@@ -227,12 +231,18 @@ const About = () => {
           <div
             key={index}
             className={`${
-              index % 2 === 0 ? "bg-gray-100" : "bg-gray-50"
-            } p-8 rounded-lg shadow-lg mb-10`}
+              index % 2 === 0 ? "bg-white" : "bg-gray-50"
+            } p-10 rounded-lg shadow-xl transition-transform duration-300 hover:scale-105 mb-12`}
           >
-            <h3 className="text-2xl font-semibold mb-4">{section.title}</h3>
-            <p className="text-gray-700 mb-4">{section.description}</p>
-            <p className="text-gray-700">{section.description2}</p>
+            <h3 className="text-3xl font-semibold mb-4 text-gray-900">
+              {section.title}
+            </h3>
+            <p className="text-lg text-gray-700 mb-4 leading-relaxed">
+              {section.description}
+            </p>
+            <p className="text-lg text-gray-700 leading-relaxed">
+              {section.description2}
+            </p>
           </div>
         ))}
       </div>

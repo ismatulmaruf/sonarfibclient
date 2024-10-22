@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [homeData, setHomeData] = useState(null);
+  const [productData, setProductData] = useState([]); // State for products
 
   // Fetch data from the API when the component mounts
   useEffect(() => {
@@ -17,7 +19,20 @@ const Home = () => {
       }
     };
 
+    const fetchProductData = async () => {
+      try {
+        const response = await fetch(
+          `${import.meta.env.VITE_API_URL}/api/products`
+        );
+        const data = await response.json();
+        setProductData(data.slice(0, 3)); // Set only the first 3 products
+      } catch (error) {
+        console.error("Error fetching product data:", error);
+      }
+    };
+
     fetchHomeData();
+    fetchProductData();
   }, []);
 
   // Loading animation component
@@ -54,68 +69,94 @@ const Home = () => {
       </div>
 
       {/* Main Content */}
-      <div className="max-w-screen-xl mx-auto px-4 sm:px-20 lg:px-36 py-12">
+      <div className="max-w-screen-xl mx-auto px-4 sm:px-20 lg:px-36 py-16 bg-white">
         {/* Header */}
-        <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800">
+        <h2 className="text-4xl md:text-5xl font-extrabold mb-8 text-gray-900 text-center">
           {homeData.secondColumnTitle}
         </h2>
-        <p className="text-lg leading-relaxed text-gray-600 mb-8">
+        <p className="text-xl leading-relaxed text-gray-700 mb-10 text-center mx-auto max-w-3xl">
           {homeData.secondParagraph1}
         </p>
 
-        <p className="text-lg leading-relaxed text-gray-600 mb-8">
+        <p className="text-xl leading-relaxed text-gray-700 mb-10 text-center mx-auto max-w-3xl">
           {homeData.secondParagraph2}
         </p>
 
+        {/* New Product Section */}
+        <div className="py-8">
+          <div className="">
+            <h2 className="text-4xl text-center font-extrabold text-gray-900 mb-6">
+              Our Featured Products
+            </h2>
+            <p className="text-lg text-center text-gray-700 mb-8">
+              Explore a wide range of high-quality products curated just for
+              you.
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {productData.map((product, index) => (
+                <div key={index} className="bg-white p-6 rounded-lg shadow-md">
+                  <h3 className="text-xl font-semibold mb-4">
+                    {product.title}
+                  </h3>
+                  <p className="text-gray-700 mb-4">{product.description}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* Button to link to the products page using Link */}
+            <div className="text-center mt-8">
+              <Link
+                to="/product" // Redirect to products page
+                className="inline-block px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition duration-300"
+              >
+                View All Products
+              </Link>
+            </div>
+          </div>
+        </div>
+
         {/* Image Section */}
-        <div className="flex flex-wrap lg:flex-nowrap items-stretch gap-12 my-10">
-          <div className="w-full lg:w-1/2 flex-grow">
-            <img
-              src={homeData.secondImage}
-              alt="Jute Fiber"
-              className="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300 hover:scale-105"
-            />
+        <div className="container mx-auto p-6">
+          <h2 className="text-2xl font-bold text-center mb-8">
+            Explore Our Jute Products
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="relative group overflow-hidden rounded-lg shadow-lg">
+              <img
+                src={homeData.secondImage}
+                alt="Jute Fiber"
+                className="w-full h-64 object-cover transition-transform duration-300 transform group-hover:scale-110"
+              />
+              <div className="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-40 text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100 p-4 text-center">
+                <p className="font-bold text-lg">{homeData.thirdParagraph1}</p>
+                <p>{homeData.thirdParagraph2}</p>
+              </div>
+            </div>
+
+            <div className="relative group overflow-hidden rounded-lg shadow-lg">
+              <img
+                src={homeData.fifthImage}
+                alt="Jute Industry"
+                className="w-full h-64 object-cover transition-transform duration-300 transform group-hover:scale-110"
+              />
+              <div className="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-40 text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100 p-4 text-center">
+                <p className="font-bold text-lg">{homeData.fifthParagraph1}</p>
+                <p>{homeData.fifthParagraph2}</p>
+              </div>
+            </div>
           </div>
 
-          <div className="w-full lg:w-1/2 bg-gray-100 p-6 lg:p-8 rounded-lg shadow-lg flex-grow">
-            <p className="text-lg leading-relaxed text-gray-700 mb-6">
-              {homeData.thirdParagraph1}
+          <div className="mt-8">
+            <p className="text-lg text-gray-800 text-center">
+              {homeData.fourthParagraph}
             </p>
-
-            <p className="text-lg leading-relaxed text-gray-700">
-              {homeData.thirdParagraph2}
+            <p className="text-lg text-gray-800 text-center mt-4">
+              {homeData.finalContent}
             </p>
-          </div>
-        </div>
-
-        <p className="text-lg leading-relaxed text-gray-600 mb-8">
-          {homeData.fourthParagraph}
-        </p>
-
-        {/* Second Image Section */}
-        <div className="flex flex-wrap lg:flex-nowrap items-stretch gap-12 my-10">
-          <div className="w-full lg:w-1/2 bg-gray-100 p-6 lg:p-8 rounded-lg shadow-lg flex-grow">
-            <p className="text-lg leading-relaxed text-gray-700 mb-6">
-              {homeData.fifthParagraph1}
-            </p>
-
-            <p className="text-lg leading-relaxed text-gray-700">
-              {homeData.fifthParagraph2}
-            </p>
-          </div>
-
-          <div className="w-full lg:w-1/2 flex-grow">
-            <img
-              src={homeData.fifthImage}
-              alt="Jute Industry"
-              className="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300 hover:scale-105"
-            />
           </div>
         </div>
-
-        <p className="text-lg leading-relaxed text-gray-600">
-          {homeData.finalContent}
-        </p>
       </div>
     </div>
   );

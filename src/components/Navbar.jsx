@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom"; // Use NavLink for active link styling
-import Logo from "../assets/logo.png";
+// import Logo from "../assets/logo.png";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -17,7 +17,11 @@ const Navbar = () => {
           className="flex items-center space-x-3 rtl:space-x-reverse"
           onClick={handleMobileLinkClick}
         >
-          <img src={Logo} className="h-8" alt="Logo" />
+          {/* <img src={Logo} className="h-8" alt="Logo" /> */}
+          <h1 className="text-3xl font-bold font-montserrat tracking-wide">
+            <span className="text-green-600">Gold</span>
+            <span className="text-red-600">Jute</span>
+          </h1>
         </NavLink>
 
         {/* Mobile menu button (visible below 1024px width) */}
@@ -58,11 +62,11 @@ const Navbar = () => {
                 to="/"
                 className={({ isActive }) =>
                   isActive
-                    ? "block py-2 px-3 rounded lg:bg-transparent lg:p-0 font-bold text-blue-700 border-b-2 border-blue-700"
-                    : "block py-2 px-3 rounded lg:bg-transparent lg:p-0 text-gray-900"
+                    ? "block py-2 px-3 rounded lg:bg-transparent lg:p-0 font-bold text-blue-700 border-b-2 border-blue-700 text-lg bg-blue-100 shadow-lg"
+                    : "block py-2 px-3 rounded lg:bg-transparent lg:p-0 text-gray-900 hover:text-blue-700"
                 }
                 aria-current="page"
-                onClick={handleMobileLinkClick} // Close menu when clicked
+                onClick={handleMobileLinkClick}
               >
                 Home
               </NavLink>
@@ -72,10 +76,10 @@ const Navbar = () => {
                 to="/about"
                 className={({ isActive }) =>
                   isActive
-                    ? "block py-2 px-3 text-gray-900 rounded lg:bg-transparent lg:p-0 font-bold text-blue-700 border-b-2 border-blue-700"
-                    : "block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 lg:p-0"
+                    ? "block py-2 px-3 rounded lg:bg-transparent lg:p-0 font-bold text-blue-700 border-b-2 border-blue-700 text-lg bg-blue-100 shadow-lg"
+                    : "block py-2 px-3 rounded lg:bg-transparent lg:p-0 text-gray-900 hover:text-blue-700"
                 }
-                onClick={handleMobileLinkClick} // Close menu when clicked
+                onClick={handleMobileLinkClick}
               >
                 About
               </NavLink>
@@ -85,10 +89,10 @@ const Navbar = () => {
                 to="/product"
                 className={({ isActive }) =>
                   isActive
-                    ? "block py-2 px-3 text-gray-900 rounded lg:bg-transparent lg:p-0 font-bold text-blue-700 border-b-2 border-blue-700"
-                    : "block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 lg:p-0"
+                    ? "block py-2 px-3 rounded lg:bg-transparent lg:p-0 font-bold text-blue-700 border-b-2 border-blue-700 text-lg bg-blue-100 shadow-lg"
+                    : "block py-2 px-3 rounded lg:bg-transparent lg:p-0 text-gray-900 hover:text-blue-700"
                 }
-                onClick={handleMobileLinkClick} // Close menu when clicked
+                onClick={handleMobileLinkClick}
               >
                 Product
               </NavLink>
@@ -98,10 +102,10 @@ const Navbar = () => {
                 to="/contact"
                 className={({ isActive }) =>
                   isActive
-                    ? "block py-2 px-3 text-gray-900 rounded lg:bg-transparent lg:p-0 font-bold text-blue-700 border-b-2 border-blue-700"
-                    : "block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 lg:p-0"
+                    ? "block py-2 px-3 rounded lg:bg-transparent lg:p-0 font-bold text-blue-700 border-b-2 border-blue-700 text-lg bg-blue-100 shadow-lg"
+                    : "block py-2 px-3 rounded lg:bg-transparent lg:p-0 text-gray-900 hover:text-blue-700"
                 }
-                onClick={handleMobileLinkClick} // Close menu when clicked
+                onClick={handleMobileLinkClick}
               >
                 Contact
               </NavLink>
